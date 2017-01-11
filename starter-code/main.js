@@ -27,6 +27,7 @@ var isTwoCards = function()
 	{
 		window.alert("you have 2 cards in play");
 		isMatch(cardsInPlay);
+		cardsInPlay = [];
 	}
 }
 
