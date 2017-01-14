@@ -38,14 +38,13 @@ var isTwoCards = function()
 	}
 
 
-	
-
 	if (cardsInPlay.length === 2)
 	{
 		// used the below for testing the output
-		window.alert("you have 2 cards in play");
+		// window.alert("you have 2 cards in play");
 		isMatch(cardsInPlay);
 		cardsInPlay = [];
+
 	}
 }
 
@@ -57,7 +56,19 @@ var isMatch = function(cIP)
 	} else 
 	{
 		window.alert("Sorry, try again...");
+		clearBoard();
 	}
+}
+
+var clearBoard = function()
+{
+	// window.alert("clearBoard 1"); // used this for testing code
+	var x = document.getElementsByClassName('card');
+	for (var i = 0; i < x.length; i++) 
+	{
+    	x[i].innerHTML = "";
+	}
+	// window.alert("clearBoard 2"); // used this for testing
 }
 
 createBoard();
