@@ -1,6 +1,6 @@
 console.log("JS file is connected to HTML! Woo!")
 
-var cards = ['queen', 'queen', 'king', 'king', 'Guv', 'Nya'];
+var cards = ['queen', 'queen', 'king', 'king', 'joker', 'joker'];
 var cardsInPlay = [];
 
 var createBoard = function() 
@@ -20,11 +20,29 @@ var createBoard = function()
 // checks to see if there are cards in play
 var isTwoCards = function() 
 {
-	cardsInPlay.push(this.getAttribute('data-card'));
-	window.alert(cardsInPlay);
+	var dataCard = this.getAttribute('data-card');
+	cardsInPlay.push(dataCard);
+	// used the below for testing the output
+	// window.alert(cardsInPlay);
+
+	// show card pictures
+	if (dataCard === 'king') 
+	{
+		this.innerHTML = '<div class="card"><img src="https://goo.gl/OO1EPP" alt="King" /></div>'; // King
+	} else if (dataCard === 'queen')
+	{
+		this.innerHTML = '<div class="card"><img src="https://goo.gl/n0HA9D" alt="Queen" /></div>'; // Queen
+	} else
+	{
+		this.innerHTML = '<div class="card"><img src="https://goo.gl/nC9rji" alt="Queen" /></div>'; // Joker
+	}
+
+
+	
 
 	if (cardsInPlay.length === 2)
 	{
+		// used the below for testing the output
 		window.alert("you have 2 cards in play");
 		isMatch(cardsInPlay);
 		cardsInPlay = [];
@@ -43,26 +61,3 @@ var isMatch = function(cIP)
 }
 
 createBoard();
-
-
-
-// //checks to see if there are cards in play
-// function isTwoCards() {
-
-//   // add card to array of cards in play
-//   // 'this' hasn't been covered in this pre-work, but
-//   // for now, just know it gives you access to the card the user clicked on
-//   cardsInPlay.push(this.getAttribute('data-card'));
-
-//   // if you have two cards in play, check for a match
-//   if (cardsInPlay.length === 2) {
-
-//     // pass the cardsInPlay as an argument to the isMatch function
-//     isMatch(cardsInPlay);
-
-//     // clear cards in play array for your next try
-//     cardsInPlay = [];
-
-//   }
-
-// }
