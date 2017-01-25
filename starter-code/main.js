@@ -2,19 +2,22 @@ console.log("JS file is connected to HTML! Woo!")
 
 var cards = ['queen', 'queen', 'king', 'king', 'joker', 'joker'];
 cards.sort(function(a, b){return 0.5 - Math.random()}); // Shuffle the array cards
+
 var cardsInPlay = [];
 
 var createBoard = function() // creates the Board from the cards array so with 6 cards
 {
+	resetButton(); // this function shows the RESET buton at the top of the board
+	
 	var gameBoard = document.getElementById('game-board'); // stores the HTML DIV id for the starting location for the game board
 
 		for (var i=0; i<cards.length; i++) // goes through the array to append them to the board
 		{
-		  var cardElement = document.createElement('div'); // creating a div code and stored as a variable
-		  cardElement.innerHTML = '<div class="card"></div>'; // the actual HTML to be appended to the HTML
-		  cardElement.setAttribute('data-card', cards[i]); // this will set the card's 'data-card' to be the element of the array
-		  cardElement.addEventListener('click', isTwoCards); // on click the isTwoCards function is invoked
-		  gameBoard.appendChild(cardElement); // appending the HTML to the game board
+		  var cardElement = document.createElement('div'); 		// creating a div code and stored as a variable
+		  cardElement.innerHTML = '<div class="card"></div>'; 	// the actual HTML to be appended to the HTML
+		  cardElement.setAttribute('data-card', cards[i]); 		// this will set the card's 'data-card' to be the element of the array
+		  cardElement.addEventListener('click', isTwoCards); 	// on click the isTwoCards function is invoked
+		  gameBoard.appendChild(cardElement); 					// appending the HTML to the game board
 		 }
 }
 
@@ -51,6 +54,7 @@ var isMatch = function(cIP) // CIP is short for cards in play
 	if (cIP[0] === cIP[1]) // comparing the cards in the array to see if they match
 	{
 		window.alert("You found a match...!");
+		// resetButton();
 	} else 
 	{
 		window.alert("Sorry, try again...");
@@ -60,12 +64,28 @@ var isMatch = function(cIP) // CIP is short for cards in play
 
 var clearBoard = function() // function to clear the board when there is a match
 {
+
 	// window.alert("clearBoard 1"); // used this for testing code
 	var x = document.getElementsByClassName('card'); // array of all elements using the Class name so the HTML can be cleared
+	
 	for (var i = 0; i < x.length; i++) 
 	{
     	x[i].innerHTML = ""; // clear the HTML so the board starts over
 	}
+}
+
+var resetButton = function()
+{
+
+	// window.alert('Yo1'); // used for testing
+
+	var gameBoard = document.getElementById('game-board');
+	var resetBut = document.createElement('div');
+	resetBut.innerHTML = '<div><button class="reset-button" type="button" onclick="clearBoard()">RESET</button></div>'; 	
+	gameBoard.appendChild(resetBut);
+
+	// window.alert('Yo2'); // used for testing
+
 }
 
 createBoard();

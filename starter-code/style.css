@@ -29,7 +29,7 @@ h2 {
 }
 
 body {
-	/*text-align: center;*/
+	text-align: center;
 	/*This centers the boards and cards
 	which the screen shot clearly shows
 	that this should not be the case*/
@@ -71,4 +71,11 @@ footer {
 img {
 	height: 200px;
 	width: 150px;
+}
+
+.reset-button {
+	background-color: black;
+	padding: 5px;
+	display: inline-block;
+	color: white;
 }
