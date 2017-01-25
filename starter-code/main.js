@@ -1,11 +1,13 @@
 console.log("JS file is connected to HTML! Woo!")
 
 var cards = ['queen', 'queen', 'king', 'king', 'joker', 'joker'];
+cards.sort(function(a, b){return 0.5 - Math.random()}); // Shuffle the array cards
 var cardsInPlay = [];
 
 var createBoard = function() // creates the Board from the cards array so with 6 cards
 {
 	var gameBoard = document.getElementById('game-board'); // stores the HTML DIV id for the starting location for the game board
+
 		for (var i=0; i<cards.length; i++) // goes through the array to append them to the board
 		{
 		  var cardElement = document.createElement('div'); // creating a div code and stored as a variable
